@@ -1,0 +1,22 @@
+﻿@model IEnumerable<HW_5.Models.Orders>
+
+@{
+    ViewBag.Title = "View Orders";
+}
+
+<h2>ViewOrders</h2>
+
+@foreach (var item in Model)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.ODL)
+        @Html.DisplayFor(modelItem => item.Name)
+        @Html.DisplayFor(modelItem => item.DOB)
+        @Html.DisplayFor(modelItem => item.Street)
+        @Html.DisplayFor(modelItem => item.City)
+        @Html.DisplayFor(modelItem => item.State)
+        @Html.DisplayFor(modelItem => item.Zip)
+        @Html.DisplayFor(modelItem => item.County)
+        @Html.DisplayFor(modelItem => item.DateStamp)
+    </p>
+}

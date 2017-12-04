@@ -1,0 +1,49 @@
+﻿@model HW_5.Models.Orders
+
+@{
+    ViewBag.Title = "NewOrder";
+}
+
+<h2>NewOrder</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.LabelFor(model => model.ODL, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.ODL, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ODL, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.County, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.County, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.County, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.DateStamp, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.DateStamp, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.DateStamp, "", new { @class = "text-danger" })
+
+    <input class="btn btn-primary" type="submit" value="Submit" formmethod="post" />
+}
