@@ -1,4 +1,4 @@
-namespace HW_8.Models
+namespace HW8._2.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,12 +16,12 @@ namespace HW_8.Models
         }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string Names { get; set; }
 
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:mm/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:mm/dd/yyyy}")]
         [RestrictedDate]
         public DateTime DOB { get; set; }
 

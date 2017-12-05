@@ -6,10 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Diagnostics;
-using HW_8.Models;
+using HW8._2.Models;
 
-namespace HW_8.Controllers
+namespace HW8._2.Controllers
 {
     public class ArtistsController : Controller
     {

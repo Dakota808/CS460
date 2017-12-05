@@ -1,4 +1,4 @@
-﻿
+
 CREATE TABLE Artist(
 
    --The Name of the Artist
