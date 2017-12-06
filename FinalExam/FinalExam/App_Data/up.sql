@@ -1,60 +1,83 @@
-CREATE TABLE Buyers(
- BuyersID int IDENTITY (1,1) NOT NULL PRIMARY KEY,
- BuyersName varchar(50) not null,
-  
+﻿
+CREATE TABLE Artist(
+
+   --The Name of the Artist
+	Names VARCHAR(50) NOT NULL,
+	--The Date of when the Artist was Born
+	DOB DATE NOT NULL,
+	--The City that this Artist was from
+	City VARCHAR (255) NOT NULL,
+	--The ID of the Art
+	Artkey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 );
 
-CREATE TABLE Sellers(
-SellersID int IDENTITY(1,1) not null PRIMARY KEY, 
-SellersName varchar(50) not null, 
+CREATE TABLE Artwork(
+    --The Name of the Art
+	Title VARCHAR(255) NOT NULL,
+	--The Artwork primary key
+	ArtWkey int IDENTITY (1,1) PRIMARY KEY,
+	--This is the connection to give the Artist name.
+	ArtKey int FOREIGN KEY REFERENCES Artist(ArtKey),
 );
 
-CREATE TABLE Items(
-ItemID int IDENTITY(1,1) not null PRIMARY KEY,
-seller int FOREIGN KEY REFERENCES Sellers(SellersID),
-itemName varchar(255) not null,
-itemDescription varchar(255)not null, 
+CREATE TABLE Genre(
+
+	 --The Artworks Genre type
+	 genre VARCHAR(255) PRIMARY KEY
+
 
 );
 
-CREATE TABLE Bids(
-itemBidID int IDENTITY(1,1) not null PRIMARY KEY,
-itemID int FOREIGN KEY REFERENCES Items(ItemID),
-bider int FOREIGN KEY REFERENCES Buyers(BuyersID),
-timeStamps Date not null, 
-prices varchar(255) not null,
+CREATE TABLE Classification(
+   
+	 --Classification of the art
+	 classification int IDENTITY(1,1) PRIMARY KEY, 
+	 --Type of Art
+	 artwork int FOREIGN KEY REFERENCES ArtWork(ArtWkey),
+	 --Genre of the Art
+	 genres VARCHAR(255) FOREIGN KEY REFERENCES Genre(genre),
 );
 
-INSERT INTO Buyers(BuyersName)
-    VALUES
-	('Jane Stone' ),
-	('Tom McMasters'),
-	('Otto VanderWall');
 
-INSERT INTO Sellers(SellersName)
-    VALUES
-	('Gayle Hardy'),
-	('Lyle Banks'),
-	('Pearl Greene');
 
-INSERT INTO Items(itemName, itemDescription, seller)
-    VALUES
-	('Abraham Lincoln Hammer', 'A bench mallet from a broken rail-splitting maul in 1829 and owned by Abraham Lincoln', '3'),
-	('Albert Einstiens Telescope', 'A brass telescope owned by Albert Einstein in Germany, Circa 1927', '1'),
-	('Bob Dylan Love Poems', 'Five versions of an original unpublished, handwritten, love poem by Bob Dylan', '2');
+INSERT INTO Artist (Names, DOB, City)
+     VALUES 
+	 ('M.C. Escher', '1898-06-17', 'Leewarden, Netherlands'),
+	 ('Leonardo Da Vinci', '1519-05-02', 'Vinci, Italy'),
+	 ('Hati Mehmed Efendi', '1680-11-18', 'Unknown'),
+	 ('Salvador Dali', '1904-05-11', 'Figueres, Spain');
 
-INSERT INTO Bids(itemID, bider, prices, timeStamps)
-    VALUES
-	('1','3', '$250,000', '12/04/2017 09:04:22'),
-	('3', '1', '$95,000', '12/04/2017 08:44:03');
+INSERT INTO Artwork (Title, ArtKey)
+     VALUES
+	 ('Circle Limit III', '1'),
+	 ('Twon Tree', '1'),
+	 ('Mona Lisa', '2'),
+	 ('The Vitruvian Man', '2'),
+	 ('Ebru', '3'),
+	 ('Honey Is Sweeter Than Blood', '4');
+
+INSERT INTO Genre(genre)
+     VALUES
+	 ('Tesselation'),
+	 ('Surrealism'),
+	 ('Portrait'),
+	 ('Renaissance');
+
+INSERT INTO Classification(artwork, genres)
+     VALUES
+	 ('1','Tesselation'),
+	 ('2','Tesselation'),
+	 ('2','Surrealism'),
+	 ('3','Portrait'),
+	 ('3','Renaissance'),
+	 ('4','Renaissance'),
+	 ('5','Tesselation'),
+	 ('6','Surrealism');
 
 GO
 
 -- testing
-select * from Buyers;
-select * from Sellers;
-select * , sellersName from Sellers JOIN Items on Items.seller=Sellers.SellersID;
-select  * , BuyersName from Buyers JOIN Bids on Bids.bider=Buyers.BuyersID;
---select   from JOIN  on 
---select  from JOIN  on ;
---select * from ;
+select * from Artist;
+select Title, Names from Artwork JOIN Artist on Artwork.ArtKey=Artist.Artkey;
+select Title, genres from Artwork JOIN Classification on Artwork.ArtWkey=Classification.artwork;
+select * from Genre;
