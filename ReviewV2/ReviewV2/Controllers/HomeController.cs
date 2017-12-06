@@ -151,7 +151,7 @@ namespace ReviewV2.Controllers
             Bid bid = db.Bids.Find(id);
             db.Bids.Remove(bid);
             db.SaveChanges();
-            return RedirectToAction("I");
+            return RedirectToAction("Item");
         }
 
         protected override void Dispose(bool disposing)
