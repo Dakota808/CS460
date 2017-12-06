@@ -1,0 +1,50 @@
+﻿@model FinalExam.Models.Bid
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Buyer.BuyersName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buyer.BuyersName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.itemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.itemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timeStamps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timeStamps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prices)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.itemBidID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
