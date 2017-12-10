@@ -163,4 +163,4 @@ namespace HW_8_V2.Models
     }
 }
 
-
+All the rest of the obectives including the ajax I am still trying to fix.
