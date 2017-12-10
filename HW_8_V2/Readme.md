@@ -13,6 +13,7 @@ Once you have completed the Daigram of the realational database you will then bu
 to do this we will need to make a up sql which will upload the inputs of data from our created data.
 Note: This also where we test it to see what results do we recieve.
 
+
 CREATE TABLE Artist(
 
    --The Name of the Artist
@@ -24,6 +25,7 @@ CREATE TABLE Artist(
 	--The ID of the Art
 	Artkey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 );
+
 
 CREATE TABLE Artwork(
     --The Name of the Art
@@ -41,6 +43,7 @@ CREATE TABLE Genre(
 
 
 );
+
 
 CREATE TABLE Classification(
    
@@ -61,6 +64,7 @@ INSERT INTO Artist (Names, DOB, City)
 	 ('Hati Mehmed Efendi', '1680-11-18', 'Unknown'),
 	 ('Salvador Dali', '1904-05-11', 'Figueres, Spain');
 
+
 INSERT INTO Artwork (Title, ArtKey)
      VALUES
 	 ('Circle Limit III', '1'),
@@ -70,12 +74,14 @@ INSERT INTO Artwork (Title, ArtKey)
 	 ('Ebru', '3'),
 	 ('Honey Is Sweeter Than Blood', '4');
 
+
 INSERT INTO Genre(genre)
      VALUES
 	 ('Tesselation'),
 	 ('Surrealism'),
 	 ('Portrait'),
 	 ('Renaissance');
+
 
 INSERT INTO Classification(artwork, genres)
      VALUES
@@ -88,7 +94,9 @@ INSERT INTO Classification(artwork, genres)
 	 ('5','Tesselation'),
 	 ('6','Surrealism');
 
+
 GO
+
 
 -- testing
 select * from Artist;
@@ -97,5 +105,62 @@ select Title, genres from Artwork JOIN Classification on Artwork.ArtWkey=Classif
 select * from Genre;
 
 ## Step 2 building the application
-Building the application is no simple task. 
+Building the application is no simple task. It should end up looking like this. With that being located in the models folder of the 
+project. The key section for this would be the Context for that is what you will be using when you are deploying the 
+entire database as a application. 
+
+namespace HW_8_V2.Models
+{
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
+    public partial class ArtistContext : DbContext
+    {
+        public ArtistContext()
+            : base("name=ArtistContext")
+        {
+        }
+
+        public virtual DbSet<Artist> Artists { get; set; }
+        public virtual DbSet<Artwork> Artworks { get; set; }
+        public virtual DbSet<Classification> Classifications { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Artist>()
+                .Property(e => e.Names)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Artist>()
+                .Property(e => e.City)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Artwork>()
+                .Property(e => e.Title)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Artwork>()
+                .HasMany(e => e.Classifications)
+                .WithOptional(e => e.Artwork1)
+                .HasForeignKey(e => e.artwork);
+
+            modelBuilder.Entity<Classification>()
+                .Property(e => e.genres)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Genre>()
+                .Property(e => e.genre1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Genre>()
+                .HasMany(e => e.Classifications)
+                .WithOptional(e => e.Genre)
+                .HasForeignKey(e => e.genres);
+        }
+    }
+}
+
 
