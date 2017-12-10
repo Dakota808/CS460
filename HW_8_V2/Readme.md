@@ -163,4 +163,6 @@ namespace HW_8_V2.Models
     }
 }
 
-All the rest of the obectives including the ajax I am still trying to fix.
+Note: The ajax part of this lab is still being tested to see how to apply them to this lab..
+
+After that almost all of the rest of the program is done in Html format.
