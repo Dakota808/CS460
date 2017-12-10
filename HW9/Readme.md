@@ -29,3 +29,7 @@ So then you go to your visual Studio and in the solution explorer right click on
 solution and click on publish. 
 Then go it will ask where to publish this so select the Azure sql database and then use existing which is "Select Existing". Finally you then 
 go to your resource and go the folder and click on the app you made. Then all you have to do is publish it and you are done.
+
+Then app should be running and heres a link to the app:
+
+[App](http://homework9.azurewebsites.net/):_
