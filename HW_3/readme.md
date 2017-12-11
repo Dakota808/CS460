@@ -1,4 +1,7 @@
-All of the code was used to 
+All of the code was used to what java considers import statements where as the C# and in Visual Studio uses what they call
+using which they run the program by calling each function or classes.
+
+## Program
 using System;
 using static System.Console;
 using System.Collections.Generic;
@@ -177,7 +180,7 @@ namespace PostCalculator
 
     }
 }
-
+## LinkedStack
 using PostCalculator;
 using System;
 using System.Collections.Generic;
