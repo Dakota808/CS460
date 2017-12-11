@@ -18,6 +18,8 @@ Go to the sql database that would want to use with the app, take the connection 
 string to the App you just made and go to the application settings, head to the section where you add connection strings and paste the 
 connection string from the SQL Database into your values of the connection string.
 
+[https://github.com/Dakota808/CS460/blob/Revisions/HW9/Publish1.PNG](https://github.com/Dakota808/CS460/blob/Revisions/HW9/Publish1.PNG):
+
 Note: You need to give the username and password of your database which is usually,
 the Admin and the password you made when you created the account.
 
